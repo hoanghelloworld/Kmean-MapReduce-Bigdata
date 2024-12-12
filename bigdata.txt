@@ -1,0 +1,24 @@
+tạo points và clusters:
+
+python data_prep.py --src_img "C:\kmeans_mapreduce\data_prep\images_test\test_1.jpg" --dst_folder "C:\kmeans_mapreduce\resources\Input"
+
+
+visualize test:
+ python visualize_results.py --clusters_path "C:\kmeans_mapreduce\resources\Input\test_2_clusters.txt" --src_img "C:\kmeans_mapreduce\data_prep\images_test\test_2.jpg" --dst_img "C:\kmeans_mapreduce\data_prep\visual_test\image2_test.jpg"
+
+
+# tạo file input và output
+hadoop fs -mkdir -p /KMeans/Resources/Input
+hadoop fs -mkdir -p /KMeans/Resources/Output
+
+# up file points và clusters lên
+hadoop fs -put "C:\kmeans_mapreduce\resources\Input\test_1_points.txt" "C:\kmeans_mapreduce\resources\Input\test_1_clusters.txt" /KMeans/Resources/Input/
+
+# xóa các file trong tập thư mục output
+hadoop fs -rm -r -f /KMeans/Resources/Output/*
+
+# mapreduce hóa bằng thuật toán kmean
+hadoop jar "C:\kmeans_mapreduce\jar\Kmean-Mapreduce.jar" --input /KMeans/Resources/Input/test_1_points --state /KMeans/Resources/Input/test_1_clusters.txt --output /KMeans/Resources/Output  --delta 100000000.0 --max 10 --distance eucl
+
+#đọc result
+hadoop fs -cat /KMeans/Resources/Output/1/part-r-[0-9][0-9][0-9][0-9][0-9]
