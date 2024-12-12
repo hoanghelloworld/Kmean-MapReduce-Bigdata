@@ -1,60 +1,57 @@
-# K-means MapReduce implementation
-In this work k-means clustering algorithm is implemented using MapReduce (Hadoop version 2.8) framework.
+# Triển khai K-means MapReduce
+Trong nghiên cứu này, thuật toán phân cụm k-means được triển khai sử dụng framework MapReduce (Hadoop phiên bản 2.8).
 
-To run the program, shell script ```run.sh``` should be executed. It requires path to jar file and its input parameters which are:
+Để chạy chương trình, shell script `run.sh` cần được thực thi. Nó yêu cầu đường dẫn đến file jar và các tham số đầu vào là:
 
-* ```input``` - path to data file
-* ```state``` - path to file that contains clusters 
-* ```number``` - number of reducers 
-* ```output``` - output directory 
-* ```delta``` - threshold convergence (acceptable difference between 2 subsequent centroids)
-* ```max``` - maximum number of iterations 
-* ```distance``` - similairty measure (currently only Euclidean distance is supported)
+* `input` - đường dẫn đến file dữ liệu
+* `state` - đường dẫn đến file chứa các cụm
+* `number` - số lượng reducer
+* `output` - thư mục đầu ra
+* `delta` - ngưỡng hội tụ (sự khác biệt chấp nhận được giữa 2 centroid liên tiếp)
+* `max` - số lần lặp tối đa
+* `distance` - độ đo tương tự (hiện tại chỉ hỗ trợ khoảng cách Euclidean)
 
-## Workflow
-The figure below denotes one iteration of MapReduce program.
+## Quy trình làm việc
+Hình dưới đây biểu thị một lần lặp của chương trình MapReduce.
 
 ![alt text][flow]
 
-First, Centroids and Context (Configuration) are loaded into the Distributed Cache. This is done by overriding setup function in the Mapper and Reducer class. Afterwards, the input data file is split and each data point is processed by one of the map functions (in Map process). The function writes key-value pairs <Centroid, Point>, where the Centroid is the closest one to the Point. Next, Combiner is used in order to decrease the number of local writings. In this phase data points that are on the same machine are summed up and the number of those data points is recorded, Point.number variable. Now, for the optimization reasons output values are automatically shuffled and sorted by Centroids. The Reducer performs the same procedure as the Combiner, but it also checks whether centroids converged; comparing the difference between old and new centroids with delta input parameter. If a centroid converge, then the global Counter remains unchanged, otherwise, it is incremented. 
+Đầu tiên, Centroid và Context (Configuration) được tải vào Distributed Cache. Điều này được thực hiện bằng cách ghi đè hàm setup trong lớp Mapper và Reducer. Sau đó, file dữ liệu đầu vào được chia nhỏ và mỗi điểm dữ liệu được xử lý bởi một trong các hàm map (trong quá trình Map). Hàm ghi các cặp key-value <Centroid, Point>, trong đó Centroid là điểm gần nhất với Point. Tiếp theo, Combiner được sử dụng để giảm số lượng ghi cục bộ. Trong giai đoạn này, các điểm dữ liệu trên cùng một máy được tổng hợp và số lượng các điểm dữ liệu đó được ghi lại, biến Point.number. Bây giờ, vì lý do tối ưu hóa, các giá trị đầu ra được tự động xáo trộn và sắp xếp theo Centroid. Reducer thực hiện cùng một quy trình như Combiner, nhưng nó cũng kiểm tra xem các centroid có hội tụ hay không; so sánh sự khác biệt giữa các centroid cũ và mới với tham số đầu vào delta. Nếu một centroid hội tụ, thì Counter toàn cục không thay đổi, ngược lại, nó được tăng lên.
 
-After the one iteration is done, new centroids are saved and the program checks two conditions, if the program reached the maximum number of iterations or if the Counter value is unchanged. If one of these two conditions is satisfied, then the program is finished, otherwise, the whole MapReduce process is run again with the updated centroids.
+Sau khi một lần lặp hoàn tất, các centroid mới được lưu và chương trình kiểm tra hai điều kiện, nếu chương trình đạt đến số lần lặp tối đa hoặc nếu giá trị Counter không thay đổi. Nếu một trong hai điều kiện này được thỏa mãn, thì chương trình kết thúc, nếu không, toàn bộ quá trình MapReduce được chạy lại với các centroid đã cập nhật.
 
-## Examples
-One of the use-cases of k-means algorithm is the color quantization process, reducing the number of distinct colors of an image. (Far better algorithms for this purpose are available)
+## Ví dụ
+Một trong những trường hợp sử dụng của thuật toán k-means là quá trình lượng tử hóa màu, giảm số lượng màu sắc khác biệt của hình ảnh. (Có sẵn các thuật toán tốt hơn nhiều cho mục đích này)
 
-Numerical (RGB) values of images (Fig. 1) are saved as input data (Fig. 2), and clusters are randomly initialized. 
+Các giá trị số (RGB) của hình ảnh (Hình 1) được lưu làm dữ liệu đầu vào (Hình 2) và các cụm được khởi tạo ngẫu nhiên.
 
-
-### Original Images
+### Hình ảnh gốc
 
 ![alt text][fig1]
 
-
-### RGB values of original and modified images  
+### Giá trị RGB của hình ảnh gốc và đã sửa đổi
 
 ![alt text][fig2]
 
-#### After 10 iterations with 10 clusters, RBG values are represented in Fig. 3. It can be noted that a couple of centroids have vanished. 
+#### Sau 10 lần lặp với 10 cụm, các giá trị RBG được biểu diễn trong Hình 3. Có thể lưu ý rằng một vài centroid đã biến mất.
 
 ![alt text][fig3]
 
-### Modified images for a different number of centroids 
+### Hình ảnh đã sửa đổi cho số lượng centroid khác nhau
 
 ![alt text][fig4]
 
-### Modified images for a different number of iterations and 10 centroids 
+### Hình ảnh đã sửa đổi cho số lần lặp khác nhau và 10 centroid
 
 ![alt text][fig5]
 
 ![alt text][fig6]
 
+[flow]: https://github.com/Maki94/kmeans_mapreduce/blob/master/figures/alg.png "Một lần lặp MapReduce"
 
-[flow]: https://github.com/Maki94/kmeans_mapreduce/blob/master/figures/alg.png "One MapReduce iteration"
-
-[fig1]: https://github.com/Maki94/kmeans_mapreduce/blob/master/figures/fig1.PNG "Original images"
-[fig2]: https://github.com/Maki94/kmeans_mapreduce/blob/master/figures/fig2.PNG "RGB model"
-[fig3]: https://github.com/Maki94/kmeans_mapreduce/blob/master/figures/fig3.PNG "10th iteration, 10 clusters"
-[fig4]: https://github.com/Maki94/kmeans_mapreduce/blob/master/figures/fig4.PNG "Different number of clusters, 10th iteration"
-[fig5]: https://github.com/Maki94/kmeans_mapreduce/blob/master/figures/fig5.PNG "Different number of iterations, 10 clusters"
-[fig6]: https://github.com/Maki94/kmeans_mapreduce/blob/master/figures/fig6.PNG "Different number of iterations, 10 clusters"
+[fig1]: https://github.com/Maki94/kmeans_mapreduce/blob/master/figures/fig1.PNG "Hình ảnh gốc"
+[fig2]: https://github.com/Maki94/kmeans_mapreduce/blob/master/figures/fig2.PNG "Mô hình RGB"
+[fig3]: https://github.com/Maki94/kmeans_mapreduce/blob/master/figures/fig3.PNG "Lần lặp thứ 10, 10 cụm"
+[fig4]: https://github.com/Maki94/kmeans_mapreduce/blob/master/figures/fig4.PNG "Số lượng cụm khác nhau, lần lặp thứ 10"
+[fig5]: https://github.com/Maki94/kmeans_mapreduce/blob/master/figures/fig5.PNG "Số lần lặp khác nhau, 10 cụm"
+[fig6]: https://github.com/Maki94/kmeans_mapreduce/blob/master/figures/fig6.PNG "Số lần lặp khác nhau, 10 cụm"
