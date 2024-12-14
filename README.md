@@ -63,34 +63,28 @@ Các giá trị số (RGB) của hình ảnh (Hình 1) được lưu làm dữ l
 
 ### Hình ảnh gốc
 
-![alt text][fig1]
+### Hình ảnh sau khi phân cụm
 
-### Giá trị RGB của hình ảnh gốc và đã sửa đổi
+### Hình ảnh đã sửa đổi cho số lượng cluster khác nhau
 
-![alt text][fig2]
+Input Image                |  K = 9
+:-------------------------:|:-------------------------:
+![](asset/image.jpg)  |  ![](asset/generated9.jpg)
 
-#### Sau 10 lần lặp với 10 cụm, các giá trị RBG được biểu diễn trong Hình 3. Có thể lưu ý rằng một vài centroid đã biến mất.
+K = 8                      |  K = 7
+:-------------------------:|:-------------------------:
+![](generated8.jpg)  |  ![](asset/generated7.jpg)
 
-![alt text][fig3]
+K = 6                      |  K = 5
+:-------------------------:|:-------------------------:
+![](generated6.jpg)  |  ![](asset/generated5.jpg)
 
-### Hình ảnh đã sửa đổi cho số lượng centroid khác nhau
+K = 4                      |  K = 3
+:-------------------------:|:-------------------------:
+![](asset/generated4.jpg)  |  ![](asset/generated3.jpg)
 
-![alt text][fig4]
 
-### Hình ảnh đã sửa đổi cho số lần lặp khác nhau và 10 centroid
 
-![alt text][fig5]
-
-![alt text][fig6]
-
-[flow]: https://github.com/Maki94/kmeans_mapreduce/blob/master/figures/alg.png "Một lần lặp MapReduce"
-
-[fig1]: https://github.com/Maki94/kmeans_mapreduce/blob/master/figures/fig1.PNG "Hình ảnh gốc"
-[fig2]: https://github.com/Maki94/kmeans_mapreduce/blob/master/figures/fig2.PNG "Mô hình RGB"
-[fig3]: https://github.com/Maki94/kmeans_mapreduce/blob/master/figures/fig3.PNG "Lần lặp thứ 10, 10 cụm"
-[fig4]: https://github.com/Maki94/kmeans_mapreduce/blob/master/figures/fig4.PNG "Số lượng cụm khác nhau, lần lặp thứ 10"
-[fig5]: https://github.com/Maki94/kmeans_mapreduce/blob/master/figures/fig5.PNG "Số lần lặp khác nhau, 10 cụm"
-[fig6]: https://github.com/Maki94/kmeans_mapreduce/blob/master/figures/fig6.PNG "Số lần lặp khác nhau, 10 cụm"
 ## Danh sách thành viên
 
 <table>
