@@ -46,6 +46,7 @@ Cài đặt các tham số trong file `run.sh`:
    ```
 3. **Visualizer:**
      python data_prep/visualize_results.py --clusters_path "...\resources\Input\test_2_clusters.txt" --src_img  "...\data_prep\images_test\test_2.jpg" --dst_img "...\data_prep\visual_test\image2_test.jpg"
+**Chi tiết script chạy trong file bigdata.txt"
 ## Quy trình làm việc
 Hình dưới đây biểu thị một lần lặp của chương trình MapReduce.
 
