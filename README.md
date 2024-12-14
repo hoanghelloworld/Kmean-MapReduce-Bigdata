@@ -55,3 +55,18 @@ Các giá trị số (RGB) của hình ảnh (Hình 1) được lưu làm dữ l
 [fig4]: https://github.com/Maki94/kmeans_mapreduce/blob/master/figures/fig4.PNG "Số lượng cụm khác nhau, lần lặp thứ 10"
 [fig5]: https://github.com/Maki94/kmeans_mapreduce/blob/master/figures/fig5.PNG "Số lần lặp khác nhau, 10 cụm"
 [fig6]: https://github.com/Maki94/kmeans_mapreduce/blob/master/figures/fig6.PNG "Số lần lặp khác nhau, 10 cụm"
+## Danh sách thành viên
+
+<table>
+<tr>
+
+  <td  valign="top" width="14.28%"><a href="https://github.com/hoanghelloworld"><img src="https://avatars.githubusercontent.com/u/115699781?s=96&v=4" width="100px;" /><br /><sub><b>Nguyễn Huy Hoàng</b></sub></a><br/></td>
+
+  <td  valign="top" width="14.28%"><a href="https://github.com/thelong9"><img src="https://avatars.githubusercontent.com/u/125560117?v=4" width="100px;" /><br /><sub><b>Bùi Thế Long</b></sub></a><br/></td>
+
+  <td  valign="top" width="14.28%"><a href="https://github.com/Dyio147"><img src="https://avatars.githubusercontent.com/u/125756779?v=4" width="100px;" /><br /><sub><b>Trần Văn Dy </b></sub></a><br/></td>
+
+  <td  valign="top" width="14.28%"><a href="https://github.com/HienNguyenPhan"><img src="https://avatars.githubusercontent.com/u/120093175?v=4" width="100px;" /><br /><sub><b>Nguyễn Phan Hiển</b></sub></a><br/></td>
+
+</tr>
+</table>
