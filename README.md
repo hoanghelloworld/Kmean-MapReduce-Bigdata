@@ -63,6 +63,8 @@ Sau khi một lần lặp hoàn tất, các centroid mới được lưu và ch�
 
 ### Hình ảnh đã sửa đổi cho số lượng cluster khác nhau
 
+<br>
+
 Input Image                |  K = 9
 :-------------------------:|:-------------------------:
 ![](asset/image.jpg)  |  ![](asset/generated9.jpg)
