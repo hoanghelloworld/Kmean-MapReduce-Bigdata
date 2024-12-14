@@ -11,8 +11,8 @@ Trong nghiên cứu này, thuật toán phân cụm k-means được triển kha
 ### Cài đặt
 Clone repository:
 ```bash
-git clone https://github.com/phulocnguyen/KMeans-MapReduce-Images_Clustering.git
-cd KMeans-MapReduce-Images_Clustering
+git clone https://github.com/hoanghelloworld/Kmean-MapReduce-Bigdata.git
+cd Kmean-MapReduce-Bigdata
 ```
 
 Cài đặt các phụ thuộc:
