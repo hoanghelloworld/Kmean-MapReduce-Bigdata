@@ -50,7 +50,7 @@ Cài đặt các tham số trong file `run.sh`:
 ## Quy trình làm việc
 Hình dưới đây biểu thị một lần lặp của chương trình MapReduce.
 
-![alt text][flow]
+![alt text][asset/11227_2014_1225_Fig1_HTML.png]
 
 Đầu tiên, Centroid và Context (Configuration) được tải vào Distributed Cache. Điều này được thực hiện bằng cách ghi đè hàm setup trong lớp Mapper và Reducer. Sau đó, file dữ liệu đầu vào được chia nhỏ và mỗi điểm dữ liệu được xử lý bởi một trong các hàm map (trong quá trình Map). Hàm ghi các cặp key-value <Centroid, Point>, trong đó Centroid là điểm gần nhất với Point. Tiếp theo, Combiner được sử dụng để giảm số lượng ghi cục bộ. Trong giai đoạn này, các điểm dữ liệu trên cùng một máy được tổng hợp và số lượng các điểm dữ liệu đó được ghi lại, biến Point.number. Bây giờ, vì lý do tối ưu hóa, các giá trị đầu ra được tự động xáo trộn và sắp xếp theo Centroid. Reducer thực hiện cùng một quy trình như Combiner, nhưng nó cũng kiểm tra xem các centroid có hội tụ hay không; so sánh sự khác biệt giữa các centroid cũ và mới với tham số đầu vào delta. Nếu một centroid hội tụ, thì Counter toàn cục không thay đổi, ngược lại, nó được tăng lên.
 
