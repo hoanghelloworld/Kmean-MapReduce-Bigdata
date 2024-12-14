@@ -57,10 +57,6 @@ Hình dưới đây biểu thị một lần lặp của chương trình MapRedu
 Sau khi một lần lặp hoàn tất, các centroid mới được lưu và chương trình kiểm tra hai điều kiện, nếu chương trình đạt đến số lần lặp tối đa hoặc nếu giá trị Counter không thay đổi. Nếu một trong hai điều kiện này được thỏa mãn, thì chương trình kết thúc, nếu không, toàn bộ quá trình MapReduce được chạy lại với các centroid đã cập nhật.
 
 ## Ví dụ
-Một trong những trường hợp sử dụng của thuật toán k-means là quá trình lượng tử hóa màu, giảm số lượng màu sắc khác biệt của hình ảnh. (Có sẵn các thuật toán tốt hơn nhiều cho mục đích này)
-
-Các giá trị số (RGB) của hình ảnh (Hình 1) được lưu làm dữ liệu đầu vào (Hình 2) và các cụm được khởi tạo ngẫu nhiên.
-
 ### Hình ảnh gốc
 
 ### Hình ảnh sau khi phân cụm
