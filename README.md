@@ -61,9 +61,9 @@ Tiếp theo, **Combiner** được sử dụng để giảm số lượng ghi c�
 Sau khi một lần lặp hoàn tất, các centroid mới được lưu và chương trình kiểm tra hai điều kiện, nếu chương trình đạt đến số lần lặp tối đa hoặc nếu giá trị Counter không thay đổi. Nếu một trong hai điều kiện này được thỏa mãn, thì chương trình kết thúc, nếu không, toàn bộ quá trình MapReduce được chạy lại với các centroid đã cập nhật.
 
 ## Ví dụ
-### Hình ảnh gốc
+### Hình ảnh gốc sau khi phân cụm
 
-### Hình ảnh sau khi phân cụm
+![](asset/1_SqtH48BD6NkW-oI21mlpDg.png)
 
 ### Hình ảnh đã sửa đổi cho số lượng cluster khác nhau
 
