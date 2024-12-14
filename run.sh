@@ -11,7 +11,7 @@ hadoop fs -put ./Resources/Input/points.txt ./Resources/Input/clusters.txt /KMea
 hadoop fs -rm -r -f /KMeans/Resources/Output/*
 
 # specify input parameters
-JAR_PATH=./executable_jar/kmeans_mapreduce.jar
+JAR_PATH=./jar/Kmean-Mapreduce.jar
 MAIN_CLASS=Main
 INPUT_FILE_PATH=/KMeans/Resources/Input/points.txt
 STATE_PATH=/KMeans/Resources/Input/clusters.txt
