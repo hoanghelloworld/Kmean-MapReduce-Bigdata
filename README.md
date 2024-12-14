@@ -1,16 +1,51 @@
 # Triển khai K-means MapReduce
-Trong nghiên cứu này, thuật toán phân cụm k-means được triển khai sử dụng framework MapReduce (Hadoop phiên bản 2.8).
+Trong nghiên cứu này, thuật toán phân cụm k-means được triển khai sử dụng framework MapReduce .
 
-Để chạy chương trình, shell script `run.sh` cần được thực thi. Nó yêu cầu đường dẫn đến file jar và các tham số đầu vào là:
+## Cài đặt và Sử dụng
 
-* `input` - đường dẫn đến file dữ liệu
-* `state` - đường dẫn đến file chứa các cụm
-* `number` - số lượng reducer
-* `output` - thư mục đầu ra
-* `delta` - ngưỡng hội tụ (sự khác biệt chấp nhận được giữa 2 centroid liên tiếp)
-* `max` - số lần lặp tối đa
-* `distance` - độ đo tương tự (hiện tại chỉ hỗ trợ khoảng cách Euclidean)
+### Yêu cầu
+- Python 3.x
+- Hadoop hoặc một framework MapReduce tương tự
+- Các thư viện cần thiết: `numpy`, `pillow`, `matplotlib`
 
+### Cài đặt
+Clone repository:
+```bash
+git clone https://github.com/phulocnguyen/KMeans-MapReduce-Images_Clustering.git
+cd KMeans-MapReduce-Images_Clustering
+```
+
+Cài đặt các phụ thuộc:
+```bash
+pip install -r requirements.txt
+```
+
+### Cấu hình
+Cài đặt các tham số trong file `run.sh`:
+- JAR_PATH: đường dẫn đến file jar đã build
+- MAIN_CLASS=Main
+- INPUT_FILE_PATH: đường dẫn đến file điểm đầu vào
+- STATE_PATH: đường dẫn đến file cluster
+- NUMBER_OF_REDUCERS=3
+- OUTPUT_DIR: đường dẫn thư mục output
+- DELTA: ngưỡng dừng của thuật toán
+- MAX_ITERATIONS: số vòng lặp tối đa
+- DISTANCE: loại khoảng cách sử dụng
+
+### Chạy mã nguồn
+1. **Tiền xử lý ảnh:**
+   Chuyển đổi ảnh thành biểu diễn pixel hoặc đặc trưng để xử lý.
+   ```bash
+   python data_prep/data_prep.py --src_img /path/to/images --dst_folder /path/to/output --k_init_centriods 10
+   ```
+
+2. **Chạy MapReduce:**
+   Thực thi thuật toán KMeans với MapReduce.
+   ```bash
+   bash run.sh
+   ```
+3. **Visualizer:**
+     python data_prep/visualize_results.py --clusters_path "...\resources\Input\test_2_clusters.txt" --src_img  "...\data_prep\images_test\test_2.jpg" --dst_img "...\data_prep\visual_test\image2_test.jpg"
 ## Quy trình làm việc
 Hình dưới đây biểu thị một lần lặp của chương trình MapReduce.
 
