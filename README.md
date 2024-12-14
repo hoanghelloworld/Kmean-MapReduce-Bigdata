@@ -71,11 +71,11 @@ Input Image                |  K = 9
 
 K = 8                      |  K = 7
 :-------------------------:|:-------------------------:
-![](generated8.jpg)  |  ![](asset/generated7.jpg)
+![](asset/generated8.jpg)  |  ![](asset/generated7.jpg)
 
 K = 6                      |  K = 5
 :-------------------------:|:-------------------------:
-![](generated6.jpg)  |  ![](asset/generated5.jpg)
+![](asset/generated6.jpg)  |  ![](asset/generated5.jpg)
 
 K = 4                      |  K = 3
 :-------------------------:|:-------------------------:
